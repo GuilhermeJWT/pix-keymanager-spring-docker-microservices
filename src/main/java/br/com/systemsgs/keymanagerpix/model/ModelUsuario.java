@@ -7,9 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-
-import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "usuario")
@@ -21,8 +18,6 @@ public class ModelUsuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@CPF(message = "Cpf Inválido, Informe outro!!!")
-	@NotBlank(message = "O Cpf deve ser Informado para Pesquisar!!!")
 	private String cpf;
 
 	public Long getId() {
