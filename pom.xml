@@ -14,7 +14,7 @@
 	<artifactId>keymanager-pix</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>keymanager-pix</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Aplicação Clone com o (OT4 - Pix KeyManager, Kotlin - Micronaut - gRPC) totalmente em Spring</description>
 	
 	<properties>
 		<java.version>11</java.version>

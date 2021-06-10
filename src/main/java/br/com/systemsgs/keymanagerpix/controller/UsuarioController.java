@@ -5,7 +5,6 @@ import java.net.URI;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.systemsgs.keymanagerpix.model.ModelUsuario;
+import br.com.systemsgs.keymanagerpix.dto.ModelUsuarioDTO;
 import br.com.systemsgs.keymanagerpix.service.UsuarioService;
 
 @RestController
@@ -26,10 +25,10 @@ public class UsuarioController {
 	
 	@PostMapping(value = "/salvar")
 	@Transactional
-	public ResponseEntity<?> salvaUsuarioTeste(@RequestBody @Valid ModelUsuario modelUsuario, UriComponentsBuilder builder){
+	public ResponseEntity<?> salvaUsuarioTeste(@RequestBody @Valid ModelUsuarioDTO modelUsuarioDTO, UriComponentsBuilder builder){
 		
-		ModelUsuario usuarioSalvo = usuarioService.salvaUsuario(modelUsuario);
-		URI uriRedireciona = builder.path("/api/usuario/salvar").build(usuarioSalvo.getCpf());
+	   ModelUsuarioDTO usuarioSalvoDTO =  usuarioService.salvaUsuario(modelUsuarioDTO);
+	   URI uriRedireciona = builder.path("/api/usuario/salvar").build(usuarioSalvoDTO.getCpf());
 		
 		return ResponseEntity.created(uriRedireciona).build();
 	}
