@@ -28,7 +28,7 @@ public class UsuarioController {
 	public ResponseEntity<?> salvaUsuarioTeste(@RequestBody @Valid ModelUsuarioDTO modelUsuarioDTO, UriComponentsBuilder builder){
 		
 	   ModelUsuarioDTO usuarioSalvoDTO =  usuarioService.salvaUsuario(modelUsuarioDTO);
-	   URI uriRedireciona = builder.path("/api/usuario/salvar").build(usuarioSalvoDTO.getCpf());
+	   URI uriRedireciona = builder.path("/api/usuario/salvar").build(usuarioSalvoDTO);
 		
 		return ResponseEntity.created(uriRedireciona).build();
 	}

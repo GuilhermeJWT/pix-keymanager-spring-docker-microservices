@@ -3,10 +3,15 @@ package br.com.systemsgs.keymanagerpix.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import br.com.systemsgs.keymanagerpix.enums.StatusTipoChave;
+import br.com.systemsgs.keymanagerpix.enums.StatusTipoConta;
 
 @Entity
 @Table(name = "usuario")
@@ -18,22 +23,50 @@ public class ModelUsuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String cpf;
+	private String clienteId;
+
+	private String chave;
+
+	@Enumerated(EnumType.STRING)
+	private StatusTipoChave tipoChave;
+
+	@Enumerated(EnumType.STRING)
+	private StatusTipoConta statusConta;
+
+	public String getClienteId() {
+		return clienteId;
+	}
+
+	public void setClienteId(String clienteId) {
+		this.clienteId = clienteId;
+	}
+
+	public String getChave() {
+		return chave;
+	}
+
+	public void setChave(String chave) {
+		this.chave = chave;
+	}
+
+	public StatusTipoChave getTipoChave() {
+		return tipoChave;
+	}
+
+	public void setTipoChave(StatusTipoChave tipoChave) {
+		this.tipoChave = tipoChave;
+	}
+
+	public StatusTipoConta getStatusConta() {
+		return statusConta;
+	}
+
+	public void setStatusConta(StatusTipoConta statusConta) {
+		this.statusConta = statusConta;
+	}
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 	@Override
@@ -59,6 +92,6 @@ public class ModelUsuario implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
-	
+	}
+
 }
