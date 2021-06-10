@@ -4,14 +4,17 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
 
-import org.hibernate.validator.constraints.br.CPF;
+import org.hibernate.validator.constraints.Length;
 
+import br.com.systemsgs.keymanagerpix.annotation.GenericUniqueColumn;
 import br.com.systemsgs.keymanagerpix.enums.StatusTipoChave;
 import br.com.systemsgs.keymanagerpix.enums.StatusTipoConta;
+import br.com.systemsgs.keymanagerpix.model.ModelUsuario;
 
 public class ModelUsuarioDTO {
 
-	@CPF(message = "Chave Inválida, Informe outra!!!")
+	@GenericUniqueColumn(domainClass = ModelUsuario.class, fieldName = "chave", message = "Chave já Cadastrada, Informe Outra!!!")
+	@Length(max = 77, message = "A Chave deve ter no máximo 77 Caracteres!!!")
 	@NotBlank(message = "A Chave deve ser Informada!!!")
 	private String chave;
 

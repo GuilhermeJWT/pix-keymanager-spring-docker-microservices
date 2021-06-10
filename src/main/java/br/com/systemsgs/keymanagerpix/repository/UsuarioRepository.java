@@ -7,5 +7,7 @@ import br.com.systemsgs.keymanagerpix.model.ModelUsuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<ModelUsuario, Long>{
+	
+	boolean existsByChave(String chave);
 
 }
