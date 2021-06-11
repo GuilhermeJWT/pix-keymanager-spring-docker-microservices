@@ -1,5 +1,7 @@
 package br.com.systemsgs.keymanagerpix.service;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,4 +25,11 @@ public class UsuarioService {
 		
 		return entidadeConvertida;
 	}
+	
+	@Transactional
+	public void removeChavePiv(UUID pixId, String clienteId) {
+		usuarioRepository.deleteByPixIdAndClienteId(pixId, clienteId);
+		System.out.println("Removendo id: " + pixId);
+	}
+	
 }

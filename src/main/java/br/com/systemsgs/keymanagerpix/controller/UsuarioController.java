@@ -1,12 +1,17 @@
 package br.com.systemsgs.keymanagerpix.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +42,11 @@ public class UsuarioController {
 	@GetMapping(value = "/pesquisaUsuariosItau")
 	public List<ModelUsuarioDTO> retornaTodosClientesItau() {
 		return itauClient.retornaTodosClientesItau();
+	}
+	
+	@DeleteMapping(value = "/removeChave/{pixId}/{clienteId}")
+	public void removeChavePix(@PathVariable UUID pixId, @PathVariable String clienteId){
+		usuarioService.removeChavePiv(pixId, clienteId);
 	}
 	
 }

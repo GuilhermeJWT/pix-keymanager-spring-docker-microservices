@@ -1,6 +1,7 @@
 package br.com.systemsgs.keymanagerpix.model;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -32,6 +33,8 @@ public class ModelUsuario implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private StatusTipoConta statusConta;
+	
+	private UUID pixId = UUID.randomUUID();
 
 	public String getClienteId() {
 		return clienteId;
@@ -67,6 +70,14 @@ public class ModelUsuario implements Serializable {
 
 	public Long getId() {
 		return id;
+	}
+	
+	public UUID getPixId() {
+		return pixId;
+	}
+	
+	public void setPixId(UUID pixId) {
+		this.pixId = pixId;
 	}
 
 	@Override
