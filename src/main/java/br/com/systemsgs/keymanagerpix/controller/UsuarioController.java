@@ -1,5 +1,7 @@
 package br.com.systemsgs.keymanagerpix.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,7 @@ public class UsuarioController {
 	}
 	
 	@GetMapping(value = "/pesquisaUsuariosItau")
-	public String retornaTodosClientesItau() {
+	public List<ModelUsuarioDTO> retornaTodosClientesItau() {
 		return itauClient.retornaTodosClientesItau();
 	}
 	
