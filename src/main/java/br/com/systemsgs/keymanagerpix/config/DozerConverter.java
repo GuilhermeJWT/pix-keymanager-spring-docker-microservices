@@ -1,4 +1,4 @@
-package br.com.systemsgs.keymanagerpix.converter;
+package br.com.systemsgs.keymanagerpix.config;
 
 import java.util.ArrayList;
 import java.util.List;
