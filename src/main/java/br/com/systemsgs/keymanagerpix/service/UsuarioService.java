@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.systemsgs.keymanagerpix.converter.DozerConverter;
 import br.com.systemsgs.keymanagerpix.dto.ModelUsuarioDTO;
+import br.com.systemsgs.keymanagerpix.exception.RecursoNaoEncontradoException;
 import br.com.systemsgs.keymanagerpix.model.ModelUsuario;
 import br.com.systemsgs.keymanagerpix.repository.UsuarioRepository;
 
@@ -28,8 +29,16 @@ public class UsuarioService {
 	
 	@Transactional
 	public void removeChavePiv(UUID pixId, String clienteId) {
-		usuarioRepository.deleteByPixIdAndClienteId(pixId, clienteId);
-		System.out.println("Removendo id: " + pixId);
+		
+		boolean existeChavePix = usuarioRepository.existsByPixId(pixId);
+		boolean existeClienteId = usuarioRepository.existsByClienteId(clienteId);
+		
+		if(existeChavePix && existeClienteId == true) {
+			usuarioRepository.deleteByPixIdAndClienteId(pixId, clienteId);
+		}else {
+			throw new RecursoNaoEncontradoException();
+		}
+		
 	}
 	
 }

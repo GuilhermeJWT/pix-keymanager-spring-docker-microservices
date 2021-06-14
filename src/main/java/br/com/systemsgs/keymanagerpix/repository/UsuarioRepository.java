@@ -12,6 +12,10 @@ public interface UsuarioRepository extends JpaRepository<ModelUsuario, Long>{
 	
 	boolean existsByChave(String chave);
 	
+	boolean existsByPixId(UUID pixId);
+	
+	boolean existsByClienteId(String clienteId);
+	
 	void deleteByPixIdAndClienteId(UUID pixId, String clienteId);
 
 }
